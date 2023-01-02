@@ -3,10 +3,10 @@ import math
 
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support import expected_conditions as ec
+from webdriver_manager.chrome import ChromeDriverManager
 
 
 def calc(x):
@@ -20,7 +20,7 @@ try:
     browser.get(link)
 
     WebDriverWait(browser, 15).until(
-        EC.text_to_be_present_in_element((By.ID, 'price'), '100')
+        ec.text_to_be_present_in_element((By.ID, 'price'), '100')
     )
     browser.find_element(By.ID, 'book').click()
 
