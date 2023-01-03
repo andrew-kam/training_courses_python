@@ -5,3 +5,5 @@ def test_substring(full_string, substring):
 
 if __name__ == '__main__':
     test_substring('fulltext', 'some_value')
+
+# https://stepik.org/lesson/36285/step/9?auth=login&unit=162401
