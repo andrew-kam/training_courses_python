@@ -2,7 +2,9 @@ def devote(person):
     cut = 0
     while person > 1:
         cut += 1
-        person = int(person / 2 + 0.5)
+        # person = int(person / 2 + 0.5)
+        person /= 2
+
     return cut
 
 
