@@ -14,7 +14,7 @@ if __name__ == '__main__':
 
     l_chet, l_no = height(list_height_students)
 
-    if len(l_chet) == 1 == len(l_no) == 1:
+    if len(l_chet) == len(l_no) == 1:
         print(*l_chet, *l_no)
     else:
         print(-1, -1)
