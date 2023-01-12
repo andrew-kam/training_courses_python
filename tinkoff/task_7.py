@@ -1,56 +1,76 @@
 def read_input() -> tuple[int, list[int]]:
-    len_student = int(input().strip())
+    students_len = int(input().strip())
     students = list(map(int, input().strip().split()))
-    return len_student, students
+    return students_len, students
+
+
+def convert(list_items: list[int]) -> list[int]:
+    return [item - 1 for item in list_items]
 
 
 def checker(students: list[int]) -> bool:
-    base_list = [x + 1 for x in range(len(students))]
+    track = {0}
     ai = students[0]
-    while len(base_list) > 0:
-        if ai in base_list:
-            base_list.remove(ai)
-            ai = students[ai - 1]
-        else:
-            return False
-    return True
+    while ai not in track:
+        track.add(ai)
+        ai = students[ai]
+    if ai == 0:
+        return len(track) == len(students)
+    return False
 
 
-def double(students: list[int]):
-    list_double = []
-    list_lack = []
-    indexes_double = []
-    base_list = [x + 1 for x in range(len(students))]
-
-    for item in base_list:
-        if item not in students:
-            list_lack.append(item)
-        if students.count(item) == 2:
-            list_double.append(item)
-    if len(list_double) == 1:
-        indexes_double = [i for i in range(len(students))
-                          if students[i] == list_double[0]]
-    return list_double, list_lack, indexes_double
+def swap(students: list[int], x: int, y: int) -> list[int]:
+    redirected_students = students.copy()
+    redirected_students[x] = y
+    return redirected_students
 
 
-def swap(index, lack, students):
-    students_new = students[:]
-    students_new[index] = lack
-    return students_new
+def get_answer(students: list[int]) -> tuple[int, int]:
+    students = convert(students)
+    students_len = len(students)
+
+    if len(set(students)) == students_len - 1:
+
+        stack = [0 for _ in range(students_len)]
+        for student in students:
+            stack[student] += 1
+
+        double_gifted = stack.index(2)
+        no_gifted = stack.index(0)
+
+        indexes_double = [i for i in range(students_len)
+                          if students[i] == double_gifted]
+        if checker(swap(students, indexes_double[0], no_gifted)):
+            return indexes_double[0] + 1, no_gifted + 1
+        elif checker(swap(students, indexes_double[1], no_gifted)):
+            return indexes_double[1] + 1, no_gifted + 1
+
+    return -1, -1
 
 
 def main():
-    len_student, students = read_input()
-
-    list_double, list_lack, indexes_double = double(students)
-
-    if len(indexes_double) == 2 and checker(swap(indexes_double[0], list_lack[0], students)):
-        print(indexes_double[0] + 1, list_lack[0])
-    elif len(indexes_double) == 2 and checker(swap(indexes_double[1], list_lack[0], students)):
-        print(indexes_double[1] + 1, list_lack[0])
-    else:
-        print(-1, -1)
+    students_len, students = read_input()
+    print(*get_answer(students))
 
 
 if __name__ == '__main__':
     main()
+
+    assert not checker(convert([1, 3, 1]))
+    assert checker(convert([2, 3, 1]))
+    assert not checker(convert([2, 1, 4, 5, 3]))
+    assert not checker(convert([2, 3, 2]))
+    assert checker(convert([2, 3, 4, 5, 1]))
+
+    assert get_answer([1, 2, 3]) == (-1, -1)
+    assert get_answer([1, 3, 1]) == (1, 2)
+    assert get_answer([2, 1, 2, 3, 4]) == (1, 5)
+    assert get_answer([2, 1, 4, 5, 3]) == (-1, -1)
+    assert get_answer([2, 2]) == (2, 1)
+    assert get_answer([2, 3, 1]) == (-1, -1)
+
+    assert swap([1, 1], 1, 0) == [1, 0]
+    assert swap([1, 0, 1, 2, 3], 0, 4) == [4, 0, 1, 2, 3]
+
+    assert swap([2, 2], 1, 1) == [2, 1]
+    assert swap([2, 1, 2, 3, 4], 0, 5) == [5, 1, 2, 3, 4]
