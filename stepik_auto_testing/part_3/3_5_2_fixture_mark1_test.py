@@ -35,5 +35,5 @@ class TestMainPage1:
 if __name__ == "__main__":
     pytest.main()
     # pytest -s -v --tb=line -m smoke stepik_auto_testing/part_3/3_5_2_fixture_mark1_test.py
-
+    # "not smoke"  -  inversion
 # https://stepik.org/lesson/236918/step/2?auth=login&unit=209305
