@@ -1,0 +1,40 @@
+import pytest
+from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+
+link = "https://selenium1py.pythonanywhere.com/"
+
+
+@pytest.fixture(scope="function")
+def browser():
+    print("\nstart browser for test..")
+    browser = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+    browser.implicitly_wait(5)
+    yield browser
+    print("\nquit browser..")
+    browser.quit()
+
+
+class TestMainPage1():
+
+    def test_guest_should_see_login_link(self, browser):
+        browser.get(link)
+        browser.find_element(By.CSS_SELECTOR, "#login_link")
+
+    def test_guest_should_see_basket_link_on_the_main_page(self, browser):
+        browser.get(link)
+        browser.find_element(By.CSS_SELECTOR, ".basket-mini .btn-group > a")
+
+    @pytest.mark.xfail
+    def test_guest_should_see_search_button_on_the_main_page(self, browser):
+        browser.get(link)
+        browser.find_element(By.CSS_SELECTOR, "button.favorite")
+
+
+if __name__ == "__main__":
+    pytest.main()
+    # pytest -s -v stepik_auto_testing/part_3/3_5_5_fixture_mark_xfail_test.py
+
+# https://stepik.org/lesson/236918/step/5?auth=login&next=&unit=209305
