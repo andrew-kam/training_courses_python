@@ -17,7 +17,7 @@ def browser():
     browser.quit()
 
 
-class TestMainPage1():
+class TestMainPage1:
 
     def test_guest_should_see_login_link(self, browser):
         browser.get(link)
@@ -27,14 +27,20 @@ class TestMainPage1():
         browser.get(link)
         browser.find_element(By.CSS_SELECTOR, ".basket-mini .btn-group > a")
 
-    @pytest.mark.xfail
+    @pytest.mark.xfail(reason="fixing this bug right now")
     def test_guest_should_see_search_button_on_the_main_page(self, browser):
         browser.get(link)
         browser.find_element(By.CSS_SELECTOR, "button.favorite")
 
+    @pytest.mark.xfail(reason="fixing this bug right now")
+    def test_guest_should_see_search_button_on_the_main_page_(self, browser):
+        browser.get(link)
+        browser.find_element(By.CSS_SELECTOR, "input.btn.btn-default")
+
 
 if __name__ == "__main__":
     pytest.main()
-    # pytest -s -v stepik_auto_testing/part_3/3_5_5_fixture_mark_xfail_test.py
+    # pytest -s -v -rsxX stepik_auto_testing/part_3/3_5_5_fixture_mark_xfail_test.py
+    # pytest -v -rxX stepik_auto_testing/part_3/3_5_5_fixture_mark_xfail_test.py
 
 # https://stepik.org/lesson/236918/step/5?auth=login&next=&unit=209305
