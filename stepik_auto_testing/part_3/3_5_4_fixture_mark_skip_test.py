@@ -33,6 +33,6 @@ class TestMainPage1:
 
 if __name__ == "__main__":
     pytest.main()
-    # pytest -s -v stepik_auto_testing/part_3/3_5_4_fixture_mark_skip_test.py
+    # pytest -s -v -rsx stepik_auto_testing/part_3/3_5_4_fixture_mark_skip_test.py
 
 # https://stepik.org/lesson/236918/step/4?auth=login&next=&unit=209305
