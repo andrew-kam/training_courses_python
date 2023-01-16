@@ -6,7 +6,7 @@ def read_input() -> tuple[int, list[int]]:
 
 def get_answer_3(sum_coins: int, coins: list[int]) -> int:
     sum_coins -= 1
-    count = 0
+    count = 1
     max_coin = max(coins)
     min_coin = min(coins)
     coins.remove(min_coin)
@@ -16,29 +16,29 @@ def get_answer_3(sum_coins: int, coins: list[int]) -> int:
     for i in range(max_len):
         if max_coin * i > sum_coins:
             break
+        elif i > 0:
+            count += 1
         for j in range(max_len):
             if max_coin * i + middle_coin * j > sum_coins:
                 break
-            for k in range(max_len):
-                if max_coin * i + middle_coin * j + min_coin * k > sum_coins:
-                    break
+            elif j > 0:
                 count += 1
+            count += int((sum_coins - (max_coin * i + middle_coin * j)) / min_coin)
     return count
 
 
 def get_answer_2(sum_coins: int, coins: list[int]) -> int:
     sum_coins -= 1
-    count = 0
+    count = 1
     max_coin = max(coins)
     min_coin = min(coins)
     max_len = int(sum_coins / min_coin) + 2
     for i in range(max_len):
         if max_coin * i > sum_coins:
             break
-        for j in range(max_len):
-            if max_coin * i + min_coin * j > sum_coins:
-                break
+        elif i > 0:
             count += 1
+        count += int((sum_coins - max_coin * i) / min_coin)
     return count
 
 
