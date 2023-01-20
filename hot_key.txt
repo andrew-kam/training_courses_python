@@ -7,3 +7,9 @@ Shift+F6    переименование везде где встречаетс�
 Ctrl+Alt+T  блок вариантов условий
 
 f'{result=}'    вывод: result = 'значение'
+
+pip freeze > requirements.txt
+pip install -r requirements.txt
+
+pip install pytest-rerunfailures
+
