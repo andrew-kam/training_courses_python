@@ -1,8 +1,0 @@
-4
-BaseException
-Exception : BaseException
-LookupError : Exception
-KeyError : LookupError
-2
-BaseException
-KeyError
