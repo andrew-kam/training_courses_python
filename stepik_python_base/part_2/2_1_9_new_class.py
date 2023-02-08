@@ -10,15 +10,20 @@ class PositiveList(list):
             raise NonPositiveError
 
 
-def create_positive_list(i):
+def create_positive_list():
+    n = int(input())
     list_positive = PositiveList()
-    for _ in range(i):
+    for _ in range(n):
         list_positive.append(int(input()))
     print(list_positive)
 
 
+def main():
+    create_positive_list()
+
+
 if __name__ == '__main__':
-    n = 10
-    create_positive_list(n)
+    main()
+
 
 # https://stepik.org/lesson/24463/step/9?unit=6771
