@@ -28,3 +28,5 @@ for i in range(len(ls)):
     search(d, ls[:i], err)
     if ANS:
         print(err)
+
+# https://stepik.org/lesson/24463/step/7?unit=6771
