@@ -20,3 +20,5 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+# https://stepik.org/lesson/24466/step/5?unit=6773
