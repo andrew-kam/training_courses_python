@@ -29,14 +29,16 @@ class MultiFilter:
 def mul2(x):
     return x % 2 == 0
 
+
 def mul3(x):
     return x % 3 == 0
+
 
 def mul5(x):
     return x % 5 == 0
 
 
-a = [i for i in range(31)] # [0, 1, 2, ... , 30]
+a = [i for i in range(31)]  # [0, 1, 2, ... , 30]
 
 print(list(MultiFilter(a, mul2, mul3, mul5)))
 # [0, 2, 3, 4, 5, 6, 8, 9, 10, 12, 14, 15, 16, 18, 20, 21, 22, 24, 25, 26, 27, 28, 30]
@@ -46,3 +48,5 @@ print(list(MultiFilter(a, mul2, mul3, mul5, judge=MultiFilter.judge_half)))
 
 print(list(MultiFilter(a, mul2, mul3, mul5, judge=MultiFilter.judge_all)))
 # [0, 30]
+
+# https://stepik.org/lesson/24464/step/4?thread=solutions&unit=6769
