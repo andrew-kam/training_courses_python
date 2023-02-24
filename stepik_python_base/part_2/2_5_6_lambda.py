@@ -11,3 +11,5 @@ mod_3_1 = mod_checker(3, 1)
 print(mod_3_1(4))  # True
 
 #  mod_checker = lambda x, mod=0: lambda y: y % x == mod
+
+# https://stepik.org/lesson/24468/step/6?unit=6770
