@@ -11,3 +11,5 @@ else:
             ans = n + 1
             break
 print(ans)
+
+# https://stepik.org/lesson/24469/step/6?unit=6775
