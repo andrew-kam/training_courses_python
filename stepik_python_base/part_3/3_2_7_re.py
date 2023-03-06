@@ -9,16 +9,9 @@ for line in sys.stdin:
         print(string)
 
 '''
-import re
-import sys
-
 for line in sys.stdin:
     line = line.strip()
     if re.search(r"cat.*cat", line):
         print(line)
-        
-        
-import sys
-import re
-[print(line.rstrip()) for line in sys.stdin if len(re.findall(r"cat", line)) > 1]
 '''
+# https://stepik.org/lesson/24470/step/7?unit=6776
