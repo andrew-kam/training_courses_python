@@ -5,3 +5,5 @@ for line in sys.stdin:
     line = line.strip()
     if re.search(pattern, line):
         print(line)
+
+# https://stepik.org/lesson/24470/step/11?unit=6776
