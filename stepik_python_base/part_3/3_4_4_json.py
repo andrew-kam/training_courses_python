@@ -1,4 +1,5 @@
 import json
+
 names = []
 js = json.loads(input())
 dic = {}
@@ -12,11 +13,13 @@ for g in dic:
         dic_count[h] = 1
 sorted_dic = dict(sorted(dic_count.items()))
 
+
 def search(dic, cl, pr):
     pr += (dic[cl])
     for i in dic[cl]:
         search(dic, i, pr)
     return pr
+
 
 for j in dic:
     pr = list()
@@ -28,3 +31,5 @@ for j in dic:
 
 for v in sorted_dic:
     print(v, ':', sorted_dic[v])
+
+# https://stepik.org/lesson/24473/step/4?auth=login&unit=6777
