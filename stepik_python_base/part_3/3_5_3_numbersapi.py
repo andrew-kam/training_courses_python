@@ -7,3 +7,5 @@ with open('dataset_24476_3.txt') as file:
         res = requests.get(url)
         data = res.json()
         print('Interesting' if data['found'] else 'Boring')
+
+# https://stepik.org/lesson/24476/step/3?auth=login&unit=6781
